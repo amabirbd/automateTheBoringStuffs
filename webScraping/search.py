@@ -3,7 +3,6 @@
 
 import requests, webbrowser, bs4
 
-
 search = input('search something: ')
 print('Searching...')
 res = requests.get('https://pypi.org/search/?q=' + search)

@@ -1,6 +1,6 @@
 import requests, bs4
 
-"""
+
 res = requests.get('https://nostarch.com')
 res.raise_for_status()
 noStarchSoup = bs4.BeautifulSoup(res.text, 'html.parser')
@@ -11,7 +11,7 @@ exampleSoup = bs4.BeautifulSoup(exampleFile.read(), 'html.parser')
 elems = exampleSoup.select('#author')
 print(type(elems))
 print(elems)
-"""
+
 
 
 # Finding an Element with the select() Method
