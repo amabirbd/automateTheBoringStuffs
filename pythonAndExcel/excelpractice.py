@@ -116,3 +116,30 @@ sheet['A2'] = 300
 
 sheet['A3'] = '=SUM(A1:A2)'
 wb.save('formula.xlsx')
+
+
+# Setting Row Height and Column Width
+print('\n')
+sheet['A1'] = 'Tall row'
+sheet['B2'] = 'Wide column'
+
+sheet.row_dimensions[1].height = 70
+sheet.column_dimensions['B'].Width = 20
+wbbb.save('dimentions.xlsx')
+
+# Merging and Unmerging Cells
+print(wb.active)
+sheet.merge_cells('A1:D3')
+sheet['A1'] = 'Twelve cells merged together'
+sheet.merge_cells('C5:D5')
+sheet['C5'] = 'two merged cell'
+wbbb.save('merged.xlsx')
+
+#sheet.unmerge_cells('C5:D5')
+
+
+# Freezing Panes
+wbCurr = openpyxl.load_workbook('produceSales.xlsx')
+sheetCurr = wbCurr.active
+sheet.freeze_panes = 'A2' # freezing the rows above A2
+wbCurr.save('freeze.xlsx')
