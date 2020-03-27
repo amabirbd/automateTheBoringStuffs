@@ -67,3 +67,52 @@ for rowOfCellObj in sheet['A1':'C3']:
         print(cellObj.coordinate, cellObj.value)
     print('---end of row---')
 
+ # create and save spreadsheet doc
+newWb = openpyxl.Workbook()
+newWb.sheetnames
+s = newWb.active
+print(f'initial name: {s}')
+s.title = 'eggs and bacon'
+print(newWb.sheetnames)
+newWb.save('new.xlsx')
+
+# creating and removing sheets
+newWb.create_sheet()
+newWb.create_sheet()
+newWb.create_sheet(index=0, title='first sheet at idx 0')
+newWb.create_sheet(index=0, title='second at idx 0')
+newWb.create_sheet(index=3, title='d')
+
+del newWb['d']
+
+# newWb.save('new.xlsx')
+
+
+print(newWb.sheetnames)
+
+print('\n')
+# writing values in cells
+wbb = openpyxl.Workbook()
+sheet = wbb['Sheet']
+print(sheet)
+sheet['A1'] = 'hello, world'
+print(sheet['A1'].value)
+
+# setting font of a cell
+from openpyxl.styles import Font
+
+italic24Font = Font(size=24, italic=True, bold=True, name='Times New Roman') # font created 
+sheet['A1'].font = italic24Font
+sheet['A1'] = 'Hello World1'
+wbb.save('styles.xlsx')
+
+
+print('\n')
+# using formulas
+wbbb = openpyxl.Workbook()
+sheet = wbbb.active
+sheet['A1'] = 200
+sheet['A2'] = 300
+
+sheet['A3'] = '=SUM(A1:A2)'
+wb.save('formula.xlsx')
